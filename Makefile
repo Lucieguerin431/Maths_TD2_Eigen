@@ -117,61 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hello
+# Target rules for targets named exe
 
 # Build rule for target.
-hello: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello
-.PHONY : hello
+exe: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exe
+.PHONY : exe
 
 # fast build rule for target.
-hello/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/build
-.PHONY : hello/fast
-
-#=============================================================================
-# Target rules for targets named greet
-
-# Build rule for target.
-greet: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 greet
-.PHONY : greet
-
-# fast build rule for target.
-greet/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/greet.dir/build.make CMakeFiles/greet.dir/build
-.PHONY : greet/fast
-
-hello.o: hello.cpp.o
-.PHONY : hello.o
-
-# target to build an object file
-hello.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.cpp.o
-.PHONY : hello.cpp.o
-
-hello.i: hello.cpp.i
-.PHONY : hello.i
-
-# target to preprocess a source file
-hello.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.cpp.i
-.PHONY : hello.cpp.i
-
-hello.s: hello.cpp.s
-.PHONY : hello.s
-
-# target to generate assembly for a file
-hello.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.cpp.s
-.PHONY : hello.cpp.s
+exe/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/build
+.PHONY : exe/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/greet.dir/build.make CMakeFiles/greet.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -179,7 +142,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/greet.dir/build.make CMakeFiles/greet.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -187,7 +150,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/greet.dir/build.make CMakeFiles/greet.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -198,11 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... greet"
-	@echo "... hello"
-	@echo "... hello.o"
-	@echo "... hello.i"
-	@echo "... hello.s"
+	@echo "... exe"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
