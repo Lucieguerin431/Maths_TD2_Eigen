@@ -1,53 +1,151 @@
 #include <iostream>
-#include <iomanip>      // std::setprecision
 #include <cstdlib>
 #include <Eigen/Dense>
-#include <ctime>
+#include <chrono>
 #include <cassert>
+#include <iomanip>      // std::setprecision
 
-using namespace Eigen;
+
+// mac     : g++-12  -Wall -O2 -std=c++17  -fopenmp -I /usr/local/include/eigen3 strassen.cpp
+// linux   : g++ -Wall -O2 -std=c++11 -I /usr/include/eigen3 -fopenmp  strassen.cpp 
+// windows : dites moi :)
 
 
-double dotProduct(const VectorXd &a, const VectorXd &b){
 
-  assert(a.size() == b.size() && "dotProudct: error: the 2 vectors should have the same size");
 
-  double result = 0.0;
-  for(unsigned int i=0; i<a.size(); ++i)
-    result += a(i)*b(i);	
-	
-  return result;	
+Eigen::MatrixXd matrix_product(const Eigen::MatrixXd &m1, const Eigen::MatrixXd &m2){
+
+  assert(m1.cols() == m2.rows() && "matrix_product: error: matrices incompatible size");
+
+  Eigen::MatrixXd m3 = Eigen::MatrixXd::Zero(m1.rows(), m2.cols());
+  for(unsigned int i=0; i<m3.rows(); ++i)
+    for(unsigned int j=0; j<m3.cols(); ++j)
+      for(unsigned int k=0; k<m1.cols(); ++k)
+        m3(i,j) += m1(i,k) * m2(k,j);
+  
+  return m3;  
 }
 
-MatrixXd matrixProduct(const MatrixXd &A, const MatrixXd B)
-{
-  assert(A.cols() == B.rows());
-	
-  MatrixXd C = MatrixXd::Zero(A.rows(),B.cols());
-  
-  for(unsigned int i=0; i<C.rows(); ++i)
-    for(unsigned int j=0; j<C.cols(); ++j)
-      C(i,j) = dotProduct(A.row(i),B.col(j));
 
+
+// with const reference on submatrices for readability
+Eigen::MatrixXd strassen(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B)
+{
+  // if A or B too small
+  if(A.rows() < 128) return matrix_product(A,B);
+  
+  const unsigned int rows = A.rows()/2;
+  const unsigned int cols = A.cols()/2;
+
+  const Eigen::MatrixXd &a = A.topLeftCorner(rows,cols);
+  const Eigen::MatrixXd &b = A.topRightCorner(rows,cols);
+  const Eigen::MatrixXd &c = A.bottomLeftCorner(rows,cols);
+  const Eigen::MatrixXd &d = A.bottomRightCorner(rows,cols);
+  const Eigen::MatrixXd &e = B.topLeftCorner(rows,cols);
+  const Eigen::MatrixXd &f = B.topRightCorner(rows,cols);
+  const Eigen::MatrixXd &g = B.bottomLeftCorner(rows,cols);
+  const Eigen::MatrixXd &h = B.bottomRightCorner(rows,cols);
+
+  Eigen::MatrixXd P1(strassen(a , f-h)); // a(f-h)
+  Eigen::MatrixXd P2(strassen(a+b , h)); // (a+b)h
+  Eigen::MatrixXd P3(strassen(c+d,e));   // (c+d)e
+  Eigen::MatrixXd P4(strassen(d, g-e));  // d(g-e)
+  Eigen::MatrixXd P5(strassen(a+d,e+h)); // (a+d)(e+h)
+  Eigen::MatrixXd P6(strassen(b-d,g+h)); // (b-d)(g+h)
+  Eigen::MatrixXd P7(strassen(a-c,e+f)); // (a-c)(e+f)
+ 
+  Eigen::MatrixXd C(A.rows(),A.cols());
+  C.topLeftCorner(rows,cols)     = P5 + P4 - P2 + P6;
+  C.topRightCorner(rows,cols)    = P1 + P2;
+  C.bottomLeftCorner(rows,cols)  = P3 + P4;
+  C.bottomRightCorner(rows,cols) = P1 + P5 - P3 - P7;
+  
   return C;
 }
 
+
+
+
 int main()
 {
-  srand(time(0));
+  unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
+  srand(seed);
 
-  MatrixXd A = MatrixXd::Random(5,5);	
-  MatrixXd B = MatrixXd::Random(5,5);	
+  constexpr unsigned int matrixSize = 16;
+  constexpr unsigned int nbRuns = 10;
+
+  // 2 random matrices
+  Eigen::MatrixXd A = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
+  Eigen::MatrixXd B = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
+  Eigen::MatrixXd C = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
+
+
+  // numerical accuracy test
+  std::cout << "\naccuracy ..." << std::endl;
+  std::cout << "for loop  residual = " << (matrix_product(A,B)-(A*B)).norm() / (A.rows()*A.cols()) << std::endl;
+  std::cout << "strassen  residual = " << (strassen(A,B)-(A*B)).norm() / (A.rows()*A.cols()) << std::endl;
+
+
+  std::cout << "\nbenchmark ..." << std::endl;
+#if 1 // eigen multithread, put 0 if openMP is not supported, 1 otherwize
+  const int nbProc = 8; // choose accordingly to the number of proc on your machine 
+  Eigen::setNbThreads(nbProc);
+  auto start_multi = std::chrono::steady_clock::now();
+  for(unsigned int i=0; i<nbRuns; ++i){
+    C = A*B;
+  }
+  auto stop_multi = std::chrono::steady_clock::now();
+  std::chrono::duration<double> elapsed_multi = stop_multi -start_multi;
+  std::cout << "eigen Multi : " << elapsed_multi.count() << " s" << std::endl;
+  Eigen::setNbThreads(1);
+#endif
+
+  // eigen  
+  auto start = std::chrono::steady_clock::now();
+  for(unsigned int i=0; i<nbRuns; ++i){
+    C = A*B;
+  }
+  auto stop = std::chrono::steady_clock::now();
+  std::chrono::duration<double> elapsed_seconds = stop-start;
+  std::cout << "eigen       : " << elapsed_seconds.count() << " s" << std::endl;
   
-  std::cout << "A :\n" << A << std::endl;
-  std::cout << "B :\n" << B << std::endl;
-  
-  std::cout << "mine  : \n" << matrixProduct(A,B) << std::endl;
-  std::cout << "eigen : \n " << A*B << std::endl;	
-	
+  // strassen
+  start = std::chrono::steady_clock::now();
+  for(unsigned int i=0; i<nbRuns; ++i){
+    Eigen::MatrixXd C = strassen(A,B); 
+  }
+  stop = std::chrono::steady_clock::now();
+  elapsed_seconds = stop - start;
+  std::cout << "strassen    : " << elapsed_seconds.count() << " s" << std::endl;
+
+  // 3 loops  
+  start = std::chrono::steady_clock::now();
+  for(unsigned int i=0; i<nbRuns; ++i){
+    Eigen::MatrixXd C = matrix_product(A,B);
+  }
+  stop = std::chrono::steady_clock::now();
+  elapsed_seconds = stop - start;
+  std::cout << "3 loops     : " << elapsed_seconds.count() << " s" << std::endl;
+
   return 0;
 }
 
 
 
-// g++ -Wall -I ~/eigen/  matrixProduct.cpp 
+// result 2048x2048 (4 runs)
+// thread   :   1.3 s
+// eigen    :   4 s
+// strassen :  41 s
+// standard : 270 s
+
+// result 1024x1024 (10 runs)
+// thread   :  0.9 s
+// eigen    :  3 s
+// strassen : 30 s
+// standard : 98 s
+
+// result 512x512 (50 runs)
+// thread   :  0.3 s
+// eigen    :  1 s
+// strassen : 10 s
+// standard : 19 s
