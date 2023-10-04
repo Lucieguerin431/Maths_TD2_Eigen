@@ -1,165 +1,68 @@
 #include <iostream>
-#include <cstdlib>
-#include <Eigen/Dense>
+#include <string>
+#include <iomanip>
+#include <functional>
+#include <random>
 #include <chrono>
-#include <cassert>
-#include <iomanip>      // std::setprecision
+
+#include "DualNumber.hpp"
 
 
-// mac     : g++-12  -Wall -O2 -std=c++17  -fopenmp -I /usr/local/include/eigen3 strassen.cpp
-// linux   : g++ -Wall -O2 -std=c++11 -I /usr/include/eigen3 -fopenmp  strassen.cpp 
-// windows : dites moi :)
+// g++ -Wall -O2 -std=c++14 main.cpp -o dualNum
 
 
-
-
-Eigen::MatrixXd matrix_product(const Eigen::MatrixXd &m1, const Eigen::MatrixXd &m2){
-
-  assert(m1.cols() == m2.rows() && "matrix_product: error: matrices incompatible size");
-
-  Eigen::MatrixXd m3 = Eigen::MatrixXd::Zero(m1.rows(), m2.cols());
-  for(unsigned int i=0; i<m3.rows(); ++i)
-    for(unsigned int j=0; j<m3.cols(); ++j)
-      for(unsigned int k=0; k<m1.cols(); ++k)
-        m3(i,j) += m1(i,k) * m2(k,j);
-  
-  return m3;  
+///////////////////////////////////////////////////////////////////////////////////////
+/// standard numerical central derivalitve for dual numbers
+/// input is the fuction of dual number already defined and a dual numnber.
+/// this is just for commodity, this central derivative fuction should only use the 'real' part of the dual numbers
+template<typename T> T centralDerivative(std::function<DualNumber<T>(const DualNumber<T>&)> f, const DualNumber<T> &x, const T &dx){
+    return (f(DualNumber<T>(x.real()+dx,1.0)).real()- f(DualNumber<T>(x.real()-dx)).real())/(2*dx); 
 }
 
 
 
-// with const reference on submatrices for readability
-Eigen::MatrixXd strassen(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B)
-{
-  // if A or B too small
-  if(A.rows() < 128) return matrix_product(A,B);
-  
-  const unsigned int rows = A.rows()/2;
-  const unsigned int cols = A.cols()/2;
+///////////////////////////////////////////////////////////////////////////////////////
+int main(){
 
-  const Eigen::MatrixXd &a = A.topLeftCorner(rows,cols);
-  const Eigen::MatrixXd &b = A.topRightCorner(rows,cols);
-  const Eigen::MatrixXd &c = A.bottomLeftCorner(rows,cols);
-  const Eigen::MatrixXd &d = A.bottomRightCorner(rows,cols);
-  const Eigen::MatrixXd &e = B.topLeftCorner(rows,cols);
-  const Eigen::MatrixXd &f = B.topRightCorner(rows,cols);
-  const Eigen::MatrixXd &g = B.bottomLeftCorner(rows,cols);
-  const Eigen::MatrixXd &h = B.bottomRightCorner(rows,cols);
+    // function to evaluate using dual numbers
+    std::function<DualNumber<double>(const DualNumber<double>&)> f;
 
-  Eigen::MatrixXd P1(strassen(a , f-h)); // a(f-h)
-  Eigen::MatrixXd P2(strassen(a+b , h)); // (a+b)h
-  Eigen::MatrixXd P3(strassen(c+d,e));   // (c+d)e
-  Eigen::MatrixXd P4(strassen(d, g-e));  // d(g-e)
-  Eigen::MatrixXd P5(strassen(a+d,e+h)); // (a+d)(e+h)
-  Eigen::MatrixXd P6(strassen(b-d,g+h)); // (b-d)(g+h)
-  Eigen::MatrixXd P7(strassen(a-c,e+f)); // (a-c)(e+f)
- 
-  Eigen::MatrixXd C(A.rows(),A.cols());
-  C.topLeftCorner(rows,cols)     = P5 + P4 - P2 + P6;
-  C.topRightCorner(rows,cols)    = P1 + P2;
-  C.bottomLeftCorner(rows,cols)  = P3 + P4;
-  C.bottomRightCorner(rows,cols) = P1 + P5 - P3 - P7;
-  
-  return C;
+    // its derivative formula, to compare our result with the good result
+    std::function<double(const double&)> df;
+
+    // // easy test
+    // f  = [](const DualNumber<double> &x){return x*(x+1);}; // f(x)  = x*x
+    // df = [](const double &x){return 2*x+1;};             // f'(x) = 2x
+
+    // badass test
+    // f(x) = log(2|x|) + exp(x) + sin(x^3)
+    f  = [](const DualNumber<double>&x){return DualNumber<double>::log(DualNumber<double>::abs(x)*2) + DualNumber<double>::exp(x) +  DualNumber<double>::sin(DualNumber<double>::pow(x,3));};
+    df = [](const double&x){return 1.0/x + std::exp(x) + (std::pow(x,2)*3.0)*std::cos(std::pow(x,3));};
+
+
+    const unsigned int precision = 20;
+
+    // select seed from time and some random distribution
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::cout << "seed : " << seed << std::endl;
+    std::mt19937 gen(seed);
+    std::uniform_real_distribution<double> uniformRealDistribution(-20,20);
+    DualNumber<double> x(0,1);  // f(x) = x  => sa dérivée est 1, et x prendra des valeurs dans la boucle for
+
+    // make some tests
+    for(unsigned int i=0; i< 10; ++i){
+        // select a value for x over the selected distribution
+        x.real() = uniformRealDistribution(gen);
+        // f(x) via dual numbers
+        std::cout << std::setprecision(5) << "function : f (" << x.real() << ") = " << std::setprecision(precision) << f(x).real() << std::endl;
+        // f'(x) via computer algebra or derivative function
+        std::cout << std::setprecision(5) << "comp alg : f'(" << x.real() << ") = " << std::setprecision(precision) << df(x.real()) << std::endl;
+        // f'(x) via dual numbers
+        std::cout << std::setprecision(5) << "dual nb  : f'(" << x.real() << ") = " << std::setprecision(precision) << f(x).dual() << std::endl;
+        // f'(x) via regular numerical differentiation
+        std::cout << std::setprecision(5) << "numerical: f'(" << x.real() << ") = " << std::setprecision(precision) << centralDerivative<double>(f,x,1.0e-10) << std::endl;
+        std::cout << std::endl;
+    }
+
+    return 0;
 }
-
-Eigen::VectorXd gaussSeidel (const Eigen::MatrixXd &A, const Eigen :: VectorXd &b , const uint nbIter  )
-{
-  for(unsigned int iter=0; iter<nbIter; ++iter)
-      for(unsigned int i=0; i<b.size(); ++i)
-        x(j)=(b(i)-sum)/A(i,i);
-        for(unsigned int j=0; j<A.size(); ++j)
-          sum=A(i,j)*x(j);
-}
-
-
-int main()
-{
-  unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
-  srand(seed);
-
-  constexpr unsigned int matrixSize = 4;
-  constexpr unsigned int nbRuns = 10;
-  int alpha;
-  // 2 random matrices
-  Eigen::MatrixXd A = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
-  A.diagonal()=Eigen::VectorXd::Ones(matrixSize)*alpha;
-  
-  for(unsigned int i=0; i<matrixSize; ++i)
-      for(unsigned int j=0; j<m3.cols(); ++j)
-        for(unsigned int k=0; k<m1.cols(); ++k)
-          m3(i,j) += m1(i,k) * m2(k,j);
-
-  Eigen::MatrixXd B = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
-  Eigen::MatrixXd C = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
-
-
-  // numerical accuracy test
-  std::cout << "\naccuracy ..." << std::endl;
-  std::cout << "for loop  residual = " << (matrix_product(A,B)-(A*B)).norm() / (A.rows()*A.cols()) << std::endl;
-  std::cout << "strassen  residual = " << (strassen(A,B)-(A*B)).norm() / (A.rows()*A.cols()) << std::endl;
-
-
-  std::cout << "\nbenchmark ..." << std::endl;
-#if 1 // eigen multithread, put 0 if openMP is not supported, 1 otherwize
-  const int nbProc = 8; // choose accordingly to the number of proc on your machine 
-  Eigen::setNbThreads(nbProc);
-  auto start_multi = std::chrono::steady_clock::now();
-  for(unsigned int i=0; i<nbRuns; ++i){
-    C = A*B;
-  }
-  auto stop_multi = std::chrono::steady_clock::now();
-  std::chrono::duration<double> elapsed_multi = stop_multi -start_multi;
-  std::cout << "eigen Multi : " << elapsed_multi.count() << " s" << std::endl;
-  Eigen::setNbThreads(1);
-#endif
-
-  // eigen  
-  auto start = std::chrono::steady_clock::now();
-  for(unsigned int i=0; i<nbRuns; ++i){
-    C = A*B;
-  }
-  auto stop = std::chrono::steady_clock::now();
-  std::chrono::duration<double> elapsed_seconds = stop-start;
-  std::cout << "eigen       : " << elapsed_seconds.count() << " s" << std::endl;
-  
-  // strassen
-  start = std::chrono::steady_clock::now();
-  for(unsigned int i=0; i<nbRuns; ++i){
-    Eigen::MatrixXd C = strassen(A,B); 
-  }
-  stop = std::chrono::steady_clock::now();
-  elapsed_seconds = stop - start;
-  std::cout << "strassen    : " << elapsed_seconds.count() << " s" << std::endl;
-
-  // 3 loops  
-  start = std::chrono::steady_clock::now();
-  for(unsigned int i=0; i<nbRuns; ++i){
-    Eigen::MatrixXd C = matrix_product(A,B);
-  }
-  stop = std::chrono::steady_clock::now();
-  elapsed_seconds = stop - start;
-  std::cout << "3 loops     : " << elapsed_seconds.count() << " s" << std::endl;
-
-  return 0;
-}
-
-
-
-// result 2048x2048 (4 runs)
-// thread   :   1.3 s
-// eigen    :   4 s
-// strassen :  41 s
-// standard : 270 s
-
-// result 1024x1024 (10 runs)
-// thread   :  0.9 s
-// eigen    :  3 s
-// strassen : 30 s
-// standard : 98 s
-
-// result 512x512 (50 runs)
-// thread   :  0.3 s
-// eigen    :  1 s
-// strassen : 10 s
-// standard : 19 s

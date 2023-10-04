@@ -144,11 +144,38 @@ CMakeFiles/exe.dir/main.cpp.o: /workspace/Maths_TD2_Eigen/main.cpp \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Dense \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Core \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/Macros.h \
+ /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/iomanip \
+ /usr/include/c++/11/locale \
+ /usr/include/c++/11/bits/locale_facets_nonio.h /usr/include/c++/11/ctime \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/c++/11/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/11/bits/locale_conv.h \
+ /usr/include/c++/11/bits/unique_ptr.h /usr/include/c++/11/utility \
+ /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/tuple \
+ /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
+ /usr/include/c++/11/bits/invoke.h \
+ /usr/include/c++/11/bits/quoted_string.h /usr/include/c++/11/sstream \
+ /usr/include/c++/11/bits/sstream.tcc /usr/include/c++/11/functional \
+ /usr/include/c++/11/bits/refwrap.h \
+ /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map \
+ /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/unordered_map.h \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/bits/stl_algo.h \
+ /usr/include/c++/11/bits/algorithmfwd.h \
+ /usr/include/c++/11/bits/stl_heap.h \
+ /usr/include/c++/11/bits/stl_tempbuf.h \
+ /usr/include/c++/11/bits/uniform_int_dist.h /usr/include/c++/11/random \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -172,243 +199,14 @@ CMakeFiles/exe.dir/main.cpp.o: /workspace/Maths_TD2_Eigen/main.cpp \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
- /usr/include/c++/11/stdlib.h /usr/include/c++/11/complex \
- /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/MKL_support.h \
- /usr/include/c++/11/cstddef /usr/include/c++/11/cassert \
- /usr/include/assert.h /usr/include/c++/11/functional \
- /usr/include/c++/11/tuple /usr/include/c++/11/utility \
- /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/array \
- /usr/include/c++/11/bits/uses_allocator.h \
- /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
- /usr/include/c++/11/bits/std_function.h \
- /usr/include/c++/11/unordered_map \
- /usr/include/c++/11/ext/aligned_buffer.h \
- /usr/include/c++/11/bits/hashtable.h \
- /usr/include/c++/11/bits/hashtable_policy.h \
- /usr/include/c++/11/bits/enable_special_members.h \
- /usr/include/c++/11/bits/node_handle.h \
- /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_uninitialized.h \
- /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/bits/stl_algo.h \
- /usr/include/c++/11/bits/algorithmfwd.h \
- /usr/include/c++/11/bits/stl_heap.h \
- /usr/include/c++/11/bits/stl_tempbuf.h \
- /usr/include/c++/11/bits/uniform_int_dist.h /usr/include/c++/11/cstring \
- /usr/include/string.h /usr/include/strings.h /usr/include/c++/11/climits \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /usr/include/c++/11/algorithm \
- /usr/include/c++/11/pstl/glue_algorithm_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/Constants.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/Meta.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/StaticAssert.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/XprHelper.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/Memory.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/IntegralConstant.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/SymbolicIndex.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/NumTraits.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/MathFunctions.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/GenericPacketMath.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/MathFunctionsImpl.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/Default/ConjHelper.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/Default/Half.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/Default/BFloat16.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/Default/TypeCasting.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/Default/Settings.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/functors/StlFunctors.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/IndexedViewHelper.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/ReshapedHelper.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/ArithmeticSequence.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/IO.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/DenseBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/CommonCwiseUnaryOps.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/BlockMethods.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/IndexedViewMethods.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/IndexedViewMethods.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/ReshapedMethods.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/ReshapedMethods.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/MatrixBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/CommonCwiseBinaryOps.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/MatrixCwiseUnaryOps.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/MatrixCwiseBinaryOps.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/EigenBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Product.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CoreEvaluators.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/AssignEvaluator.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Assign.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/ArrayBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/ArrayCwiseUnaryOps.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/../plugins/ArrayCwiseBinaryOps.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/BlasUtil.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/DenseStorage.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/NestByValue.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/ReturnByValue.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/NoAlias.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/PlainObjectBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Matrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Array.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CwiseTernaryOp.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CwiseUnaryView.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Dot.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/StableNorm.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Stride.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/MapBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Map.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Ref.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Block.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/VectorBlock.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/IndexedView.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Reshaped.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Transpose.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/DiagonalMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Diagonal.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/DiagonalProduct.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Redux.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Visitor.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Fuzzy.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Swap.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CommaInitializer.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/GeneralProduct.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Solve.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Inverse.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/SolverBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/PermutationMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Transpositions.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/TriangularMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/SelfAdjointView.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/Parallelizer.h \
- /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/ProductEvaluators.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/SolveTriangular.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/BandMatrix.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/CoreIterators.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/ConditionEstimator.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/BooleanRedux.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Select.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/VectorwiseOp.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/PartialReduxEvaluator.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Random.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Replicate.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/Reverse.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/ArrayWrapper.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/StlIterators.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/LU \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/misc/Kernel.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/misc/Image.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/LU/FullPivLU.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/LU/PartialPivLU.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/LU/Determinant.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/LU/InverseImpl.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/LU/arch/InverseSize4.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Cholesky \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Jacobi \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Jacobi/Jacobi.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Cholesky/LLT.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Cholesky/LDLT.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/QR \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Householder \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Householder/Householder.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Householder/HouseholderSequence.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Householder/BlockHouseholder.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/QR/HouseholderQR.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/SVD \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/misc/RealSvd2x2.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/SVD/SVDBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/SVD/JacobiSVD.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/SVD/BDCSVD.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Geometry \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/OrthoMethods.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/EulerAngles.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Homogeneous.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/RotationBase.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Rotation2D.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Quaternion.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/AngleAxis.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Transform.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Translation.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Scaling.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Hyperplane.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/ParametrizedLine.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/AlignedBox.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/Umeyama.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Geometry/arch/Geometry_SIMD.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/Eigenvalues \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/./RealSchur.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h \
- /home/linuxbrew/.linuxbrew/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
- /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
- /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
- /usr/include/c++/11/iomanip /usr/include/c++/11/locale \
- /usr/include/c++/11/bits/locale_facets_nonio.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/11/bits/codecvt.h \
- /usr/include/c++/11/bits/locale_facets_nonio.tcc \
- /usr/include/c++/11/bits/locale_conv.h \
- /usr/include/c++/11/bits/unique_ptr.h \
- /usr/include/c++/11/bits/quoted_string.h
+ /usr/include/c++/11/bits/random.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
+ /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
+ /usr/include/c++/11/bits/stl_numeric.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/pstl/glue_numeric_defs.h \
+ /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/chrono \
+ /usr/include/c++/11/ratio /usr/include/c++/11/bits/parse_numbers.h \
+ /workspace/Maths_TD2_Eigen/DualNumber.hpp /usr/include/c++/11/fstream \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc
