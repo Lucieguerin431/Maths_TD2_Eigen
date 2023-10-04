@@ -63,7 +63,14 @@ Eigen::MatrixXd strassen(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B)
   return C;
 }
 
-
+Eigen::VectorXd gaussSeidel (const Eigen::MatrixXd &A, const Eigen :: VectorXd &b , const uint nbIter  )
+{
+  for(unsigned int iter=0; iter<nbIter; ++iter)
+      for(unsigned int i=0; i<b.size(); ++i)
+        x(j)=(b(i)-sum)/A(i,i);
+        for(unsigned int j=0; j<A.size(); ++j)
+          sum=A(i,j)*x(j);
+}
 
 
 int main()
@@ -71,11 +78,18 @@ int main()
   unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
   srand(seed);
 
-  constexpr unsigned int matrixSize = 16;
+  constexpr unsigned int matrixSize = 4;
   constexpr unsigned int nbRuns = 10;
-
+  int alpha;
   // 2 random matrices
   Eigen::MatrixXd A = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
+  A.diagonal()=Eigen::VectorXd::Ones(matrixSize)*alpha;
+  
+  for(unsigned int i=0; i<matrixSize; ++i)
+      for(unsigned int j=0; j<m3.cols(); ++j)
+        for(unsigned int k=0; k<m1.cols(); ++k)
+          m3(i,j) += m1(i,k) * m2(k,j);
+
   Eigen::MatrixXd B = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
   Eigen::MatrixXd C = Eigen::MatrixXd::Random(matrixSize,matrixSize); 
 
