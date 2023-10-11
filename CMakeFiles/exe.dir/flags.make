@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -isystem /home/linuxbrew/.linuxbrew/include/eigen3
 
-CXX_FLAGS = 
+CXX_FLAGS = -std=gnu++20
 
