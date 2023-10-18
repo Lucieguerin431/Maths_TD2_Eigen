@@ -1,19 +1,28 @@
-PROJECT(MyHello)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.13)
 
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
-set(CMAKE_CXX_STANDARD 20)
+# give a name to the project
+project(poly LANGUAGES C CXX)
+
+# include Eigen
 find_package(Eigen3 REQUIRED)
-include_directories(${EIGEN_INCLUDE_DIR})
-ADD_EXECUTABLE(exe main.cpp)
-target_link_libraries(exe Eigen3::Eigen)
-#target_compile_options(exe PRIVATE -fopenmp)
-IF (WIN32 AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-	TARGET_LINK_LIBRARIES(greet stdc++)
-ENDIF()
+if(${EIGEN3_FOUND})
+    message(STATUS "lib EIGEN3 found")
+    message(STATUS "  version " ${EIGEN3_VERSION_STRING})
+    message(STATUS "  include " ${EIGEN3_INCLUDE_DIR})
+else()
+    message(FATAL_ERROR "lib EIGEN3 not found")
+endif()
+
+
+# files to compile
+add_executable(poly src/main.cpp src/Polynomial.cpp src/Polynomial.hpp)
+
+# compilation flags
+target_compile_features(poly PRIVATE cxx_std_11) # use at least c++ 11
+target_compile_options(poly PRIVATE -Wall -O2)   # specify some compilation flags
+
+# lib include path
+target_include_directories(poly PRIVATE "${EIGEN3_INCLUDE_DIR}")
+
+

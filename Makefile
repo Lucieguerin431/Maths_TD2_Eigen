@@ -117,41 +117,65 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named exe
+# Target rules for targets named poly
 
 # Build rule for target.
-exe: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exe
-.PHONY : exe
+poly: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 poly
+.PHONY : poly
 
 # fast build rule for target.
-exe/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/build
-.PHONY : exe/fast
+poly/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poly.dir/build.make CMakeFiles/poly.dir/build
+.PHONY : poly/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/Polynomial.o: src/Polynomial.cpp.o
+.PHONY : src/Polynomial.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/Polynomial.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poly.dir/build.make CMakeFiles/poly.dir/src/Polynomial.cpp.o
+.PHONY : src/Polynomial.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/Polynomial.i: src/Polynomial.cpp.i
+.PHONY : src/Polynomial.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/Polynomial.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poly.dir/build.make CMakeFiles/poly.dir/src/Polynomial.cpp.i
+.PHONY : src/Polynomial.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/Polynomial.s: src/Polynomial.cpp.s
+.PHONY : src/Polynomial.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exe.dir/build.make CMakeFiles/exe.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/Polynomial.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poly.dir/build.make CMakeFiles/poly.dir/src/Polynomial.cpp.s
+.PHONY : src/Polynomial.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poly.dir/build.make CMakeFiles/poly.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poly.dir/build.make CMakeFiles/poly.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poly.dir/build.make CMakeFiles/poly.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -161,10 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... exe"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... poly"
+	@echo "... src/Polynomial.o"
+	@echo "... src/Polynomial.i"
+	@echo "... src/Polynomial.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 
